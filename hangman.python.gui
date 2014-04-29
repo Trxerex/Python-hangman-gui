@@ -1,0 +1,390 @@
+import random
+from tkinter import*
+import tkinter
+top = tkinter.Tk()
+top.configure(background='green')
+top.geometry('500x450')
+top.title("Vješala")
+l3=[]
+l4=[]
+l5=[]
+l6=[]
+l7=[]
+l8=[]
+l9=[]
+l10=[]
+l11=[]
+l12=[]
+l13=[]
+l14=[]
+l15=[]
+with open("rijeci.txt") as f:
+    for line in f.readlines():
+        for word in line.split(' '):
+           # print(word)
+            if len(word)<=0:
+                continue
+            if not word[-1].isalpha():
+                word = word[:-1]
+            
+            if len(word) == 3:
+                l3.append(word.lower())
+            if len(word) == 4:
+                l4.append(word.lower())
+            if len(word) == 5:
+                l5.append(word.lower())
+            if len(word) == 6:
+                l6.append(word.lower())
+            if len(word) == 7:
+                l7.append(word.lower())
+            if len(word) == 8:
+                l8.append(word.lower())
+            if len(word) == 9:
+                l9.append(word.lower())
+            if len(word) == 10:
+                l10.append(word.lower())
+            if len(word) == 11:
+                l11.append(word.lower())
+            if len(word) == 12:
+                l12.append(word.lower())
+            if len(word) == 13:
+                l13.append(word.lower())
+            if len(word) == 14:
+                l14.append(word.lower())
+            if len(word) == 15:
+                l15.append(word.lower())
+                
+global s,b,c,d,level,A,pokušaj,grijec,temp,brojac,rijec,unos,ttt,cc2
+ttt=0
+cc2=3
+cc1=10
+cc3=11
+    
+def crtanje():
+    global brojac,slika,b
+    if brojac==1:
+        line1=slika.create_line(145,145,5,145,fill="red")
+    if brojac==2:
+        line1=slika.create_line(5,145,5,5,fill="red")
+    if brojac==3:
+        line1=slika.create_line(5,5,100,5,fill="red")
+    if brojac==4:
+        line1=slika.create_line(100,5,100,25,fill="red")
+    if brojac==5:
+        line1=slika.create_oval(80,20,120,50,fill="red")
+    if brojac==6:
+        line1=slika.create_line(100,25,100,100,fill="red")
+    if brojac==7:
+        line1=slika.create_line(100,100,75,125,fill="red")
+    if brojac==8:
+        line1=slika.create_line(100,100,125,125,fill="red")
+    if brojac==9:
+        line1=slika.create_line(100,60,125,60,fill="red")
+    if brojac==10:
+        line1=slika.create_line(100,60,75,60,fill="red")
+    if brojac==11:
+        line1=slika.create_oval(90,30,95,35,fill="red")
+    if brojac==12:
+        line1=slika.create_oval(105,30,110,35,fill="red")
+    if brojac==13:
+        line1=slika.create_oval(95.5,40,105,45,fill="red")
+    if brojac==15:
+        if messagebox.askyesno("Obješeni ste "," Riječ je bila: " +b+", Nova igra?"):
+                ponovno()
+        else:
+                top.destroy()
+def promjena():
+    frame=Frame(top,height=100,width=100,background="green")
+    frame.place(relx=0.15,rely=0.15)
+    global cc2,igro,cc1,cc3
+    if cc2==0:
+        cc2=1
+        igro.configure(text="Drugi igrac",bg="blue")
+        
+        if cc3==0:
+            Hint.configure(bg="blue")
+            Hint.lift(frame)
+        
+    else:
+        cc2=0
+        igro.configure(text="Prvi igrac",bg="red")
+        if cc1==0:
+            Hint.configure(bg="red")
+            Hint.lift(frame)
+    
+    
+def igrac():
+    global ttt,cc1,cc2,cc3
+    cc1=10
+    ttt=0
+    cc2=10
+    cc3=10
+    igg.pack_forget()
+    iggg.pack_forget()
+def igracc():
+    global ttt,cc1,cc2,cc3
+    ttt=1
+    cc1=0
+    cc2=0
+    cc3=0
+    igg.pack_forget()
+    iggg.pack_forget()
+    
+    
+def odabir():
+    global s,b,c,d,level,A,pokušaj,grijec,temp,brojac,rijec,unos,C,Brojac,hint,Hint,uzi,q,tezina,slika,ttt,igro,zz
+    zz=''
+    frame=Frame(top,height=100,width=100,background="green")
+    frame.place(relx=0.2,rely=0.2)
+    
+    labframe.destroy()
+    
+    igg.pack_forget()
+    iggg.pack_forget()   
+    s=level.get()
+    brojac=0
+    if s=='1' or (s!='2'and s!='3'):
+        q=random.randrange(3,8)
+        if q==3:
+           b=random.choice(l3)
+        if q==4:
+           b=random.choice(l4)
+        if q==5:
+           b=random.choice(l5)
+        if q==6:
+           b=random.choice(l6)
+        if q==7:
+           b=random.choice(l7)
+        if q==8:
+           b=random.choice(l8)
+           
+    if s=='2':
+        q=random.randrange(8,12)
+        if q==8:
+           b=random.choice(l8)
+        if q==9:
+           b=random.choice(l9)
+        if q==10:
+           b=random.choice(l10)
+        if q==11:
+           b=random.choice(l11)
+        if q==12:
+           b=random.choice(l12)
+    
+           
+    if s=='3':
+        q=random.randrange(12,15)
+        if q==12:
+           b=random.choice(l12)
+        if q==13:
+           b=random.choice(l13)
+        if q==14:
+           b=random.choice(l14)
+        if q==15:
+           b=random.choice(l15)
+        
+    
+    A.pack_forget()
+    level.delete(0,END)
+    level.pack_forget()
+    B.pack_forget()
+    rijec=StringVar()
+    rijec=len(b)*'_'
+    hint=""
+    d=Label(top,text="broj grešaka",relief=RAISED,font=("Helvetica", 16))
+    d.pack()
+    d.place(relx=0.1,rely=0.4)
+    Brojac=Label(top,text=brojac,relief=RAISED,font=("Helvetica", 16))
+    Brojac.pack()
+    Brojac.place(relx=0.36,rely=0.4)
+    unos= Entry(top,bd=5)
+    unos.pack(side=TOP)
+    C=tkinter.Button(top,text="Unesi",command=pok,activebackground="RED",background="BLUE",fg="white")
+    C.pack(side=TOP)
+    
+    if s=='3':
+        grijec=Label(top, text=(rijec),relief=RAISED,font=("TkDefaultFont", 20))
+    else:
+        grijec=Label(top, text=(" ".join(rijec)),relief=RAISED,font=("TkDefaultFont", 20))
+        
+    grijec.pack()
+    grijec.place(relx=0.45,rely=0.4)
+    Hint=tkinter.Button(top,text="HINT",command=hintt,background="red",font=("TkDefaultFont", 15))
+    
+    Hint.pack(in_=frame)
+    c=""
+    slika=Canvas(top, height=150, width=150,relief=RAISED,bg="BLACK")
+    slika.pack()
+    slika.place(relx=0.35,rely=0.6)
+    hint=""
+    if ttt==1:
+        igro=Label(top,text="prvi igrac",relief=RAISED,font=("Helvetica", 16),background="red")
+        igro.place(relx=0.7,rely=0.2)
+        
+    
+def pok():
+    global rijec,A,brojac,hint,c,s,ttt
+    c=unos.get()
+    unos.delete(0,END)
+    temp=""
+    
+    #print(not(c in b) or (c in hint))
+    if not(c in b) or c in hint or not(c.isalpha()):
+        brojac+=1
+        if ttt==1:
+            promjena()
+        
+        
+    for i in range(0,len(b)):
+        if(b[i]==c):
+            temp+=b[i]
+            
+        else:
+            temp+=rijec[i]
+            
+    hint=hint+c
+    rijec=temp
+    
+    #print(b)
+    
+    
+    Brojac.config(text=brojac)
+    
+    
+    if s=='3':
+        grijec.config(text=rijec)
+        
+    else:
+        grijec.config(text=" ".join(rijec))
+        
+    
+ 
+    crtanje()
+    if(rijec==b):
+        brojac=0
+        
+        if ttt==0:
+            if messagebox.askyesno("Tocan odgovor!", "Bravo! Nova igra?"):
+                ponovno()
+            else:
+                top.destroy()
+        if ttt==1 and cc2==0:
+            if messagebox.askyesno("Tocan odgovor!", "pobijedio je prvi igrac"):
+                ponovno()
+            else:
+                top.destroy()
+        if ttt==1 and cc2==1:
+            if messagebox.askyesno("Tocan odgovor!", "pobijedio je drugi igrac"):
+                ponovno()
+            else:
+                top.destroy()
+            
+    
+        
+def hintt():
+    global b,hint,c,uzi,time,cc3,cc2,cc1,zz,frame
+    z="abcćčdefghijklmnopqrsštuvwxyzž"
+    frame=Frame(top,height=100,width=100,background="green")
+    frame.place(relx=0.15,rely=0.15)
+    j=0
+    o=0
+    
+    while o==0:
+        if z[j]!=c and (not(z[j] in hint)) and (not(z[j] in b)) and z[j]!=zz:
+            time=10
+            o=1
+            
+            if cc3==0 or cc1==0:
+                
+                if cc2==0 and cc1==0:
+                    zz=z[j]
+                    Hint.configure(bg="blue")
+                    Hint.lower(frame)
+                    
+                    cc1=1
+                    if cc1==1 and cc3==1:
+                        Hint.destroy()
+                        frame.destroy()
+                        
+                if cc2==1 and cc3==0:
+                    cc3=1
+                    zz=z[j]
+                    Hint.configure(bg="red")
+                    Hint.lower(frame)
+                    
+                    if cc1==1 and cc3==1:
+                        Hint.destroy()
+                        frame.destroy()
+            else:
+                Hint.destroy()
+                Hint.destroy()
+            pomoc=tkinter.Tk()
+            pomoc.geometry('500x250')
+            uzi=Label(pomoc,text="siguran sam da nema ovog slova: " + z[j].upper(),relief=RAISED,font=("Helvetica", 13))
+            uzi.pack()
+            uzi.place(relx=0.25,rely=0.35)
+            vrijeme=Label(pomoc,text=time,relief=RAISED,font=("Helvetica", 20),bg="BLUE")
+            vrijeme.pack()
+            vrijeme.place(relx=0.45,rely=0.55)
+            
+            def tick():
+                global time
+                
+                time-=1
+                vrijeme.configure(text=time)
+                if time==0:
+                    pomoc.destroy()
+                else:
+                    pomoc.after(900,tick)
+            pomoc.after(1,tick)
+            
+        else:
+            j=j+1
+                                                
+                            
+def ponovno():
+    global A
+    unos.destroy()
+    C.destroy()
+    grijec.destroy()
+    Brojac.destroy()
+    d.destroy()
+    Hint.destroy()
+    slika.destroy()
+    if ttt==1:
+        igro.destroy()
+        igrac()
+    
+    
+    B.pack(side=TOP)
+    level.pack(side=TOP)
+    A.pack(side=TOP)
+    igg.pack(side=RIGHT)
+    iggg.pack(side=LEFT)
+    
+    
+    
+    
+    
+    
+    
+B= Label( top, text="Unesi level od 1 do 3", relief=RAISED)
+B.pack(side=TOP)
+level= Entry(top,bd=5)
+level.pack(side=TOP)
+A=tkinter.Button(top,text="Unesi",command=odabir,activebackground="RED",background="BLUE",fg="white")
+A.pack(side=TOP)
+igg=tkinter.Button(top,text="Jedan igrac",command=igrac,activebackground="cyan",background="yellow")
+igg.pack(side=LEFT)
+iggg=tkinter.Button(top,text="Dva igraca",command=igracc,activebackground="BLUE",background="RED")
+iggg.pack(side=RIGHT)
+labframe=LabelFrame(top,text="Upute",bg="black",fg="white")
+labframe.place(relx=0.25,rely=0.4)
+upu1=Label(labframe,text="sve riječi su u malim slovima",bg="black",fg="white")
+upu1.pack()
+upu2=Label(labframe,text="u slučaju greške automatski se odabire prva težina",bg="black",fg="white")
+upu2.pack()
+upu3=Label(labframe,text="ako se ne odabere broj igraća je automatski jedan",bg="black",fg="white")
+upu3.pack()
+
+top.mainloop()
